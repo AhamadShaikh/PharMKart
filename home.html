@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #nav{
+            display: flex;
+            height: 120px;
+            align-items: center;
+            /* border: 1px solid red; */
+            justify-content: space-around;
+        }
+        #nav > img{
+            width: 120px;
+            height: 120px;
+            border: 1px solid black;
+            border: none;
+        }
+        #log-btn{
+            width: 100px;
+            font-size: 25px;
+            background-color:#4DB6AC;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            border-radius: 3px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        #log-btn:hover{
+            background-color: #26A69A;
+        }
+        form > input{
+            height: 40px;
+            width: 600px;
+            font-size: 15px;
+            border-radius: 3px;
+            border: none;
+            background-color: #FAFAFA;
+            padding: 5px 0px 5px 20px;
+        }
+        #addCart > img{
+            width: 50px;
+            height: 50px;
+        }
+        #category{
+            width: 80%;
+            display: flex;
+            margin: auto;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        #category > select{
+            font-size: 20px;
+            border: none;
+        }
+        #sliding-win > img{
+            margin-top: 30px;
+            width: 100%;
+        }
+        #pro-cont{
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+           margin: auto;
+           margin-top: 30px;
+           gap: 10px;
+        }
+        #pro-cont > div{
+            width: 100%;
+            border: 1px solid red;
+        }
+        #pro-cont > div > img{
+            width: 100%;
+        }
+        #pro-cont > div > button{
+           width: 90%;
+           height: 40px;
+           font-size: 20px;
+           margin-left: 5%;
+           border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <img src="./PharMKart Logo.png" alt="">
+        <form>
+            <input placeholder="Search for products & brands..." type="text">
+            <!-- <input type="submit" value="Search"> -->
+        </form>
+        <a id="log-btn" href="./login.html" target="./login.html">Login</a>
+        <a id="addCart" href="./cart.html">
+            <img src="https://media.istockphoto.com/id/1201806395/vector/shopping-cart-line-icon-black-editable-stroke-trolley-basket-business-concept-shopping-cart.jpg?s=612x612&w=0&k=20&c=KmXx8oRPoNgNzwhxu3zCsacUF-HSVMtpvGEi3hBbe2w=" alt="">
+        </a>
+    </div>
+    <div id="category">
+        <select name="" id="">
+            <option value="">Shop By Category</option>
+            <option value=""></option>
+        </select>
+        <select name="" id="">
+            <option value="">Best Sellers</option>
+            <option value=""></option>
+        </select>
+        <select name="" id="">
+            <option value="">Brands</option>
+            <option value=""></option>
+        </select>
+        <select name="" id="">
+            <option value="">Deals</option>
+        </select>
+        <select name="" id="">
+            <option value="">Blogs</option>
+            <option value=""></option>
+        </select>
+        <select name="" id="">
+            <option value="">Gift Card</option>
+            <option value=""></option>
+        </select>
+    </div>
+    <!-- <div id="sliding-win">
+        <img src="https://img9.hkrtcdn.com/22823/bnr_2282218_o.jpg" alt="">
+        <img src="https://img7.hkrtcdn.com/22822/bnr_2282186_o.jpg" alt="">
+        <img src="https://img1.hkrtcdn.com/22822/bnr_2282190_o.png" alt="">
+        <img src="https://img9.hkrtcdn.com/22822/bnr_2282198_o.jpg" alt="">
+        <img src="https://img9.hkrtcdn.com/22824/bnr_2282348_o.jpg" alt="">
+        <img src="https://img1.hkrtcdn.com/22823/bnr_2282210_o.jpg" alt="">
+        <img src="" alt="">
+    </div> -->
+    <div id="pro-cont">
+
+    </div>
+</body>
+<script src="./home.js"></script>
+</html>

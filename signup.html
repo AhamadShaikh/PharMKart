@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main-container{
+            width: 80%;
+            display: flex;
+            align-items: center;
+            margin: auto;
+            height: 600px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        #cont1{
+            width: 50%;
+            height: 100%;
+            background-color: #F5F5F5;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        #cont2{
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            padding-top: 100px;
+        }
+        #cont2 > form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #cont2 > form > input{
+            width: 60%;
+            height: 50px;
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding-left: 5px;
+            
+        }
+        #cont2 > form > p > a{
+            text-decoration: none;
+        }
+        #cont2 > button{
+            width: 60%;
+            height: 50px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        #cont1 > img{
+            width: 100%;
+            height: 100%;
+        }
+        #cont2 > button:hover{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div id="main-container">
+        <div id="cont1">
+            <img src="" alt="">
+        </div>
+        <div id="cont2">
+            <h1>Login or Sign-up</h1>
+            <form>
+                <input type="text" placeholder="Enter your Name" id="name">
+                <input placeholder="Enter your Email" type="email" id="email">
+                <input type="password" placeholder="Enter Password" id="password">
+                <input type="Submit" value="Register">
+                <p>
+                    Already have a account?
+                    <a href="./signin.html">Signin</a>
+                </p>
+
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+         let count = 0;
+        function slideshowFun(images){
+        image.setAttribute("src",imageArr[count])
+        count++;
+        if(count == imageArr.length){
+            count = 0;
+        }
+        }
+        let imageArr = ["https://static1.hkrtcdn.com/hknext/static/media/login/slider/1.svg","https://static1.hkrtcdn.com/hknext/static/media/login/slider/3.svg",
+           "https://static1.hkrtcdn.com/hknext/static/media/login/slider/2.svg"];
+        //    Display(imageArr);
+
+        let image = document.querySelector("img");
+        let cont1 = document.querySelector("cont1")
+
+        window.addEventListener("load", function () {
+        slideshowFun();
+        // add event-listeners;
+        setInterval(function (){
+            slideshowFun();
+        }, 8000);
+        });
+
+        let formEl = document.querySelector("form");
+        let nameInt = document.getElementById("name");
+        let emailInt = document.getElementById("email");
+        let passInt = document.getElementById("password");
+        
+        let detailArr = [];
+        formEl.addEventListener("submit",function(e){
+            e.preventDefault();
+
+            let signup_detail = {
+            name : nameInt.value,
+            email : emailInt.value,
+            pass : passInt.value,
+            }
+            detailArr.push(signup_detail);
+            localStorage.setItem("account_data",JSON.stringify(detailArr));
+        })
+
+
+</script>
+
+</html>
