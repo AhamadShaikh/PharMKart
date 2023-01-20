@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #EEEEEE;
+        }
+        #nav{
+            display: flex;
+            height: 120px;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin-bottom: 30px;
+            background-color: white;
+        }
+        #nav > img{
+            width: 120px;
+            height: 120px;
+            border: 1px solid black;
+            border: none;
+        }
+        #main-cart{
+            width: 80%;
+            display: flex;
+            margin: auto;
+            background-color: white;
+            border-radius: 20px;
+        }
+        .container2{
+            width: 40%;
+
+            margin-left: 10%;
+            margin-top: 20px;
+        }
+        #container2 > div{
+            /* width: 40%; */
+            margin-left: 10%;
+            margin-bottom: 20px;
+        }
+        #check{
+            width: 70px;
+            height: 40px;
+            background-color: #4DD0E1;
+            border: none;
+            border-radius: 5px;
+        }
+        #check:hover{
+            background-color: #00BCD4;
+        }
+        input{
+            height: 40px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .container2 > div > button{
+            width: 70%;
+            height: 50px;
+            margin: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #4DD0E1;
+            font-size: 20px;
+        }
+        .container2 > div > button:hover{
+            background-color: #00BCD4;
+        }
+        #container1{
+            width: 60%;
+            display: grid;
+            border: 1px solid red;
+            grid-template-columns: 20% 60% 20%;
+        }
+        .remBtn{
+            border: 1px solid black;
+            margin-top: 20px;
+            margin-left: 30px;
+            border-color: grey;
+            background-color: white;
+        }
+        .remBtn:hover{
+            background-color: red;
+        }
+        #container1 > div > img{
+            width: 100%;
+        }
+        #footer{
+            margin-top: 10px;
+            background-color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <img src="./PharMKart Logo.png" alt="">
+    </div>
+
+    <div id="main-cart">
+        <div id="container1"></div>
+
+
+
+        <div class="container2">
+            <div>
+                <input placeholder="Enter your Pincode" type="number">
+                <button id="check">Check</button>
+            </div>
+
+            <div>
+                <button>Apply Coupon</button>
+            </div>
+
+            <div>
+                <button>Proceed to Pay <span id="total"></span></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>Copyright © , HealthKart.com, or its affiliates
+        </p>
+        <img src="https://static1.hkrtcdn.com/hknext/static/media/common/footer/pay1.svg" alt="" alt="">
+        <img src="https://static1.hkrtcdn.com/hknext/static/media/common/footer/pay2.svg" alt="">
+        <img src="https://static1.hkrtcdn.com/hknext/static/media/common/footer/pay3.svg" alt="">
+        <img src="https://static1.hkrtcdn.com/hknext/static/media/common/footer/pay4.svg" alt="">
+        <img src="https://static1.hkrtcdn.com/hknext/static/media/common/footer/pay5.svg" alt="">
+        <img src="https://static1.hkrtcdn.com/hknext/static/media/common/footer/pay6.svg" alt="">
+</div>
+
+
+</body>
+<script>
+    let Cart = JSON.parse(localStorage.getItem("cartItem"))||[];
+
+    let mainCont = document.getElementById("main-cart");
+    let container1 = document.getElementById("container1");
+    let image = document.getElementById("image");
+    let description = document.getElementById("desc");
+    let removeBtn = document.getElementById("removeBtn");
+    let head2 = document.querySelector(".head2")
+
+    DisplayData(Cart)
+
+    function DisplayData(data){
+        
+        container1.innerHTML = "";
+        data.forEach((ele,ind)=>{
+
+            let imgDiv = document.createElement("div");
+            let img = document.createElement("img");
+            img.setAttribute("src",ele.img)
+
+            let descDiv = document.createElement("div");
+    
+            let desc = document.createElement("h4")
+            desc.textContent = ele.name;
+            
+            let price = document.createElement("h2");
+            price.textContent = `₹${ele.Price}`;
+            
+    
+            let discount = document.createElement("h4")
+            discount.textContent = ele.Discount;
+
+            let increment = document.createElement("button");
+            increment.innerText = "+";
+
+            let quantity = document.createElement("span");
+            quantity.innerText = ele.quantity
+
+            let decrement = document.createElement("button");
+            decrement.innerText = "-";
+
+            let removeDiv = document.createElement("div");
+
+            let remove = document.createElement("button");
+            remove.innerText = "Remove"
+            remove.setAttribute("class","remBtn");
+
+            remove.addEventListener("click", () => {
+            Cart=Cart.filter((element)=>{
+              return element.id!==ele.id
+            })
+            localStorage.setItem("cartItem",JSON.stringify(Cart))
+            DisplayData(Cart)
+        });
+
+
+        increment.addEventListener("click", () => {
+          ele=ele.quantity++;
+         
+          localStorage.setItem("cartItem",JSON.stringify(Cart))
+          DisplayData(Cart)
+        });
+        
+        decrement.addEventListener("click", () => {
+          if(ele.quantity>1){
+            ele=ele.quantity--;
+          localStorage.setItem("cartItem",JSON.stringify(Cart))
+          DisplayData(Cart)
+          }
+        });
+        price.textContent = (ele.quantity*Number(ele.Price))
+        
+
+
+            imgDiv.append(img);
+            descDiv.append(desc,price,discount,increment,quantity,decrement)
+            removeDiv.append(remove);
+            
+
+            container1.append(imgDiv,descDiv,removeDiv)
+        });
+        
+        
+        let sum=0
+      for(let i=0;i<Cart.length;i++){
+        sum+=Number(Cart[i].Price)*Number(Cart[i].quantity)
+      }
+       total.innerHTML = sum
+
+    }
+
+    // let container2 = document.getElementById("container2");
+
+    
+    
+
+</script>
+</html>
