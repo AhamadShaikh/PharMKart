@@ -36,7 +36,7 @@ let arr1=[
       rating:3.4,
       mrp:999,
       Price:599,
-      Discount:"40%",
+      Discount:40,
       img:"https://img3.hkrtcdn.com/22586/prd_2258522_o.jpg",   
       id:1
     },
@@ -46,7 +46,7 @@ let arr1=[
       rating:4.2,
       mrp:6449,
       Price:3599,
-      Discount:"44%",
+      Discount:44,
       img:"https://img4.hkrtcdn.com/12151/prd_1215013-MuscleBlaze-Super-Gainer-XXL-OP-11-lb-Chocolate_o.jpg",
       id:2,
     },
@@ -56,7 +56,7 @@ let arr1=[
       rating:4.4,
       mrp:2279,
       Price:1329,
-      Discount:"41%",
+      Discount:41,
       img:"https://img6.hkrtcdn.com/12151/prd_1215005-MuscleBlaze-Beginners-Protein-OP-2.2-lb-Cookies-and-Cream_o.jpg", 
       id:3,
     },
@@ -66,7 +66,7 @@ let arr1=[
       rating:4.5,
       mrp:2669,
       Price:1749,
-      Discount:"34%",
+      Discount:34,
       img:"https://img2.hkrtcdn.com/13039/prd_1303871-MB-Fuel-One-Whey-Protein-Immunity-OP-2.2-lb-Chocolate_o.jpg",   
       id:4,
      }
@@ -93,7 +93,7 @@ function Display1(data){
         price.textContent = `₹${ele.Price}`;
 
         let discount = document.createElement("h4")
-        discount.textContent = ele.Discount;
+        discount.textContent = `${ele.Discount}%`;
 
         let addCart = document.createElement("button")
         addCart.textContent = "Add to Cart";
@@ -150,7 +150,7 @@ let arr2 = [
           rating:3.8,
           mrp:1000,
           Price:449,
-          Discount:"55%",
+          Discount:55,
           img:"https://img2.hkrtcdn.com/14613/prd_1461211-HealthKart-Biotin-10000-mcg-OP-90-tablets-Unflavoured_o.jpg",  
           id:"5",
         },
@@ -160,7 +160,7 @@ let arr2 = [
           rating:4.4,
           mrp:2279,
           Price:1329,
-          Discount:"41%",
+          Discount:41,
           img:"https://img2.hkrtcdn.com/15126/prd_1512571-MuscleBlaze-Beginners-Protein-OP-2.2-lb-Magical-Mango_o.jpg",   
           id:"6"
         },
@@ -170,7 +170,7 @@ let arr2 = [
           rating:3.9,
           mrp:3699,
           Price:2199,
-          Discount:"40%",
+          Discount:40,
           img:"https://img8.hkrtcdn.com/12485/prd_1248437_o.jpg",   
           id:"7"
         },
@@ -180,7 +180,7 @@ let arr2 = [
           rating:4.9,
           mrp:6149,
           Price:4749,
-          Discount:"22%",
+          Discount:22,
           img:"https://img10.hkrtcdn.com/15127/prd_1512659-MuscleBlaze-Biozyme-Performance-Whey-OP-4.4-lb-Rich-Chocolate_o.jpg",   
           id:"8"
        },
@@ -208,7 +208,7 @@ function Display2(data){
       price.textContent = `₹${ele.Price}`;
 
       let discount = document.createElement("h4")
-      discount.textContent = ele.Discount;
+      discount.textContent = `${ele.Discount}%`;
 
       let addCart = document.createElement("button")
       addCart.textContent = "Add to Cart";
@@ -264,7 +264,7 @@ let SlideImage2 = [
         rating:3.4,
         mrp:999,
         Price:599,
-        Discount:"40%",
+        Discount:40,
         img:"https://img3.hkrtcdn.com/22586/prd_2258522_o.jpg",   
         id:1
       },
@@ -274,7 +274,7 @@ let SlideImage2 = [
         rating:4.2,
         mrp:6449,
         Price:3599,
-        Discount:"44%",
+        Discount:44,
         img:"https://img4.hkrtcdn.com/12151/prd_1215013-MuscleBlaze-Super-Gainer-XXL-OP-11-lb-Chocolate_o.jpg",
         id:2,
       },
@@ -284,7 +284,7 @@ let SlideImage2 = [
         rating:4.4,
         mrp:2279,
         Price:1329,
-        Discount:"41%",
+        Discount:41,
         img:"https://img6.hkrtcdn.com/12151/prd_1215005-MuscleBlaze-Beginners-Protein-OP-2.2-lb-Cookies-and-Cream_o.jpg", 
         id:3,
       },
@@ -294,7 +294,7 @@ let SlideImage2 = [
         rating:4.5,
         mrp:2669,
         Price:1749,
-        Discount:"34%",
+        Discount:34,
         img:"https://img2.hkrtcdn.com/13039/prd_1303871-MB-Fuel-One-Whey-Protein-Immunity-OP-2.2-lb-Chocolate_o.jpg",   
         id:4,
       },
@@ -304,7 +304,7 @@ let SlideImage2 = [
         rating:3.8,
         mrp:1000,
         Price:449,
-        Discount:"55%",
+        Discount:55,
         img:"https://img2.hkrtcdn.com/14613/prd_1461211-HealthKart-Biotin-10000-mcg-OP-90-tablets-Unflavoured_o.jpg",  
         id:5,
       },
@@ -314,7 +314,7 @@ let SlideImage2 = [
         rating:4.4,
         mrp:2279,
         Price:1329,
-        Discount:"41%",
+        Discount:41,
         img:"https://img2.hkrtcdn.com/15126/prd_1512571-MuscleBlaze-Beginners-Protein-OP-2.2-lb-Magical-Mango_o.jpg",   
         id:6
       },
@@ -324,7 +324,7 @@ let SlideImage2 = [
         rating:3.9,
         mrp:3699,
         Price:2199,
-        Discount:"40%",
+        Discount:40,
         img:"https://img8.hkrtcdn.com/12485/prd_1248437_o.jpg",   
         id:7
       },
@@ -334,11 +334,13 @@ let SlideImage2 = [
         rating:4.9,
         mrp:6149,
         Price:4749,
-        Discount:"22%",
+        Discount:22,
         img:"https://img10.hkrtcdn.com/15127/prd_1512659-MuscleBlaze-Biozyme-Performance-Whey-OP-4.4-lb-Rich-Chocolate_o.jpg",   
         id:8
      },
   ];
+
+  let mainDiv = document.getElementById("mainDiv");
   
   let main = document.getElementById("searchCont");
   let deleteEl = document.getElementById("deleteCont")
@@ -349,9 +351,11 @@ let SlideImage2 = [
   })
   
   function searchData(data){
-    
     let searched = searchForm.search.value;
-  
+    // if(searched == ""){
+    //   main.innerHTML = "";
+    //   deleteEl.innerHTML = "";
+    // }
     let filtered = data.filter((element,index)=>{
       if(element.name.toUpperCase().includes(searched.toUpperCase()) === true){
         return true;
@@ -359,9 +363,12 @@ let SlideImage2 = [
         return false;
       }
     });
-    
-      Display(filtered);
+    if(searched == ""){
+      mainDiv.style.display = "inline"
+    }else{
+      Display(filtered)
   }
+}
   
   function Display(data){
     deleteEl.innerHTML = "";
@@ -383,7 +390,7 @@ let SlideImage2 = [
         price.textContent = `₹${ele.Price}`;
   
         let discount = document.createElement("h4")
-        discount.textContent = ele.Discount;
+        discount.textContent = `${ele.Discount}%`;
   
         let addCart = document.createElement("button")
         addCart.textContent = "Add to Cart";
@@ -406,7 +413,6 @@ let SlideImage2 = [
   }
   
   function checkDuplicate(product){
-    console.log(product.id)
     for(let i=0;i<array.length;i++){
       if(array[i].id===product.id){
         return true

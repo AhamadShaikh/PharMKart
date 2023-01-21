@@ -27,14 +27,14 @@
             width: 80%;
             display: flex;
             margin: auto;
-            background-color: white;
-            border-radius: 20px;
         }
         .container2{
-            width: 40%;
-
+            width: 35%;
+            /* height: 800px; */
+            /* background-color: white; */
             margin-left: 10%;
-            margin-top: 20px;
+            margin: auto;
+            border-radius: 20px;
         }
         #container2 > div{
             /* width: 40%; */
@@ -49,13 +49,30 @@
             border-radius: 5px;
         }
         #check:hover{
-            background-color: #00BCD4;
+            background-color: #00ACC1;
         }
         input{
             height: 40px;
             font-size: 20px;
             border-radius: 5px;
             margin-bottom: 20px;
+        }
+        #applyCoupon > button{
+            width: 80%;
+            height: 50px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #4DD0E1;
+            margin-left: 10%;
+        }
+        #proceedToPay > button{
+            width: 80%;
+            height: 50px;
+            font-size: 20px;
+            border-radius: 5px;
+            background-color: #4DD0E1;
+            margin-left: 10%;
         }
         .container2 > div > button{
             width: 70%;
@@ -69,11 +86,15 @@
         .container2 > div > button:hover{
             background-color: #00BCD4;
         }
+        .container2 > div{
+            font-size: 20px;
+        }
         #container1{
             width: 60%;
             display: grid;
-            border: 1px solid red;
             grid-template-columns: 20% 60% 20%;
+            background-color: white;
+            border-radius: 20px;
         }
         .remBtn{
             border: 1px solid black;
@@ -92,31 +113,102 @@
             margin-top: 10px;
             background-color: white;
         }
+        #innerCont1{
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 20px;
+        }
+        #innerCont2{
+            border: 1px solid red;
+            background-color: white;
+            border-radius: 20px;
+        }
+        #innerCont2 > div{
+            margin-bottom: 20px;
+        }
+        #div1{
+            display: flex;
+            justify-content: space-between;
+        }
+        #div2{
+            display: flex;
+            justify-content: space-between;
+        }
+        #div3{
+            display: flex;
+            justify-content: space-between;
+        }
+        #totalDiscount{
+            color: #4CAF50;
+        }
+        #green{
+            color: #4CAF50;
+        }
+        #image{
+            cursor: pointer
+        }
+        #track > button{
+            background-color: #EEEEEE;
+        }
         
     </style>
 </head>
 <body>
     <div id="nav">
-        <img src="./PharMKart Logo.png" alt="">
+        <img id="image" src="./PharMKart Logo.png" alt="">
+        <div id="track">
+            <button class="cart">Cart</button>
+            <button class="address">Address</button>
+            <button class="payment">Payment</button>
+        </div>
     </div>
 
     <div id="main-cart">
         <div id="container1"></div>
 
 
-
         <div class="container2">
-            <div>
-                <input placeholder="Enter your Pincode" type="number">
-                <button id="check">Check</button>
+            <div id="innerCont1">
+                <div>
+                    <input placeholder="Enter your Pincode" type="number">
+                    <button id="check">Check</button>
+                </div>
+    
+                <div id="applyCoupon">
+                    <button>Apply Coupon</button>
+                </div>
+    
+                <div id="proceedToPay">
+                    <button>Proceed to Pay <span id="total"></span></button>
+                </div>
             </div>
+            <div id="innerCont2">
+                <div>
+                    <h2>Order Summary : <span id="count"> </span> items</h2>
+                </div>
 
-            <div>
-                <button>Apply Coupon</button>
-            </div>
 
-            <div>
-                <button>Proceed to Pay <span id="total"></span></button>
+                <div id="div1">
+                    <div>Total MRP</div>
+                    <div><span id="MRP"></span></div>
+                </div>
+
+                <div id="div2">
+                    <div>Total Discount</div>
+                    <div><span id="totalDiscount"></span></div>
+                </div>
+
+                <div id="div3">
+                    <div>Shipping Charges</div>
+                    <div id="green">FREE</div>
+                </div>
+
+                <div id="div3">
+                    <div>Payable Amount</div>
+                    <div id="payableAmount">FREE</div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -132,10 +224,25 @@
         <img src="https://static1.hkrtcdn.com/hknext/static/media/common/footer/pay6.svg" alt="">
 </div>
 
-
 </body>
 <script>
+
+    let goHome = document.getElementById("image")
+
+    goHome.addEventListener("click",()=>{
+        window.location.href = "./home.html"
+    })
+
     let Cart = JSON.parse(localStorage.getItem("cartItem"))||[];
+    console.log(Cart)
+
+    let totalDiscount = document.getElementById("totalDiscount");
+
+    let payableAmount  = document.getElementById("payableAmount");
+
+    let countEl = document.getElementById("count")
+    
+    countEl.innerText = Cart.length
 
     let mainCont = document.getElementById("main-cart");
     let container1 = document.getElementById("container1");
@@ -165,7 +272,7 @@
             
     
             let discount = document.createElement("h4")
-            discount.textContent = ele.Discount;
+            discount.textContent = `${ele.Discount}%`;
 
             let increment = document.createElement("button");
             increment.innerText = "+";
@@ -219,17 +326,47 @@
         
         
         let sum=0
+        let dis;
+        let sum1 = 0;
       for(let i=0;i<Cart.length;i++){
-        sum+=Number(Cart[i].Price)*Number(Cart[i].quantity)
+        sum+=Number(Cart[i].Price)*Number(Cart[i].quantity);
+        dis = (sum/100)*Number(Cart[i].Discount);
+        dis = dis.toFixed(0);
+        sum1 += Number(Cart[i].mrp)*Number(Cart[i].quantity)
+        
       }
-       total.innerHTML = sum
+       total.innerHTML = `₹${sum}`;
+       MRP.innerHTML = `₹${sum1}`;
+       totalDiscount.innerHTML = `-₹${dis}`
 
+       payableAmount.innerHTML = `₹${sum}`;
+    //    let detail = JSON.parse(localStorage.getItem("charges"))||[];
+      let detail = []
+        let obj = {
+        totalmrp : `₹${sum1}`,
+        totaldis : `-₹${dis}`,
+        payamount : `₹${sum}`
+        }
+        detail.push(obj);
+        localStorage.setItem("charges",JSON.stringify(detail))
     }
 
-    // let container2 = document.getElementById("container2");
+    
+
+    let proceedToPay = document.getElementById("proceedToPay");
+
+    let cart = document.querySelector(".cart")
+
+        cart.style.backgroundColor = "green"
+
+    proceedToPay.addEventListener("click",()=>{
+        window.location.href = "./address.html"
+    });
+
+
 
     
-    
+
 
 </script>
 </html>
