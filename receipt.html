@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <style>
+         body{
+            background-color: #EEEEEE;
+        }
+        #nav{
+            display: flex;
+            height: 120px;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin-bottom: 30px;
+            background-color: white;
+        }
+        #track{
+            display: flex;
+            margin: auto;
+            align-items: center;
+        }
+        #track > button{
+            margin-right: 10px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        #track > p{
+            margin-right: 10px;
+        }
+        #nav > img{
+            width: 120px;
+            height: 120px;
+            border: 1px solid black;
+            border: none;
+        }
+         .container2{
+            width: 35%;
+            border-radius: 20px;
+            margin: auto;
+        }
+        #innerCont2{
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+            margin-left: 5%;
+            justify-content: space-between;
+            padding: 20px 20px;
+        }
+        #innerCont2 > div{
+            font-size: 20px;
+            margin-bottom: 20px;
+        } #innerCont2{
+            /* border: 1px solid red; */
+            background-color: white;
+            border-radius: 20px;
+        }
+        #innerCont2 > div{
+            margin-bottom: 20px;
+        }
+        #Div1{
+            display: flex;
+            justify-content: space-between;
+        }
+        #Div2{
+            display: flex;
+            justify-content: space-between;
+        }
+        #Div3{
+            display: flex;
+            justify-content: space-between;
+        }
+        #back{
+            margin-right: 10%;
+            background-color: #4DD0E1;
+            border-radius: 3px;
+        }
+        #invoice{
+            text-align: center;
+        }
+        #image{
+            cursor: pointer
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <img id="image" src="./PharMKart Logo.png" alt="">
+        <div id="track">
+            
+            <button class="cart">Cart</button>
+            <p>----</p>
+            <button class="address">Address</button>
+            <p>----</p>
+            <button class="payment">Payment</button>
+        </div>
+        <button id="back">Back</button>
+    </div>
+
+    <h2 id="invoice">Invoice</h2>
+    <div class="container2">
+            
+        <div id="innerCont2">
+            <div>
+                <h2>Order Details : <span id="count"> </span> items</h2>
+            </div>
+
+            <div id="sipping">
+                <p><b>Name</b> : <span id="name"></span></p>
+                <p><b>Mobile No.</b> : <span id="mobile"></span></p>
+                <p><b>Address</b> : <span id="address"></span></p>
+                <p><b>Pincode</b> : <span id="pincode"></span></p>
+            </div>
+
+
+            <div id="Div1">
+                <div>Total MRP</div>
+                <div><span id="MRP"></span></div>
+            </div>
+
+            <div id="Div2">
+                <div>Total Discount</div>
+                <div><span id="totalDiscount"></span></div>
+            </div>
+
+            <div id="Div3">
+                <div>Shipping Charges</div>
+                <div id="green">FREE</div>
+            </div>
+
+            <div id="Div3">
+                <div>Total Amount</div>
+                <div id="payableAmount"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let detail = JSON.parse(localStorage.getItem("charges"))||[];
+
+let mrp = document.getElementById("MRP");
+
+let goHome = document.getElementById("image")
+
+goHome.addEventListener("click",()=>{
+window.location.href = "./home.html"
+})
+
+let totalDiscount = document.getElementById("totalDiscount");
+
+let payableAmount  = document.getElementById("payableAmount");
+
+let countEl = document.getElementById("count")
+
+let Cart = JSON.parse(localStorage.getItem("cartItem"))||[];
+
+countEl.innerText = Cart.length;
+
+let container1 = document.getElementById("container1");
+
+
+let totalmrp = detail[0].totalmrp;
+let totalDis = detail[0].totaldis;
+let payAmount = detail[0].payamount;
+
+
+MRP.innerHTML = totalmrp;
+totalDiscount.innerHTML = totalDis
+
+payableAmount.innerHTML = payAmount;
+
+
+
+let cart = document.querySelector(".cart")
+cart.style.backgroundColor = "green";
+
+let address = document.querySelector(".address");
+address.style.backgroundColor = "green";
+
+let payment = document.querySelector(".payment");
+payment.style.backgroundColor = "green"
+
+let getdata = JSON.parse(localStorage.getItem("cusDetail"))||[];
+
+console.log(getdata)
+
+
+let nameEl = document.getElementById("name");
+nameEl.innerHTML = getdata[0].name
+
+let mobileEl = document.getElementById("mobile");
+mobileEl.innerHTML = getdata[0].mobNo
+
+let addressEl = document.getElementById("address");
+addressEl.innerHTML = getdata[0].address
+
+let pincodeEl = document.getElementById("pincode");
+pincodeEl.innerHTML = getdata[0].pincode
+
+
+let back = document.getElementById("back");
+back.addEventListener("click",()=>{
+    window.location.href = "./payment.html"
+})
+
+</script>
+</html>

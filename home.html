@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" href="signup.html">
     <link rel="stylesheet" href="./home.css">
+    <style>
+    </style>
 </head>
 <body>
+    <div id="mainDiv">
     <div id="nav">
-        <img src="./PharMKart Logo.png" alt="">
+        <img id="image" src="./PharMKart Logo.png" alt="">
         <form>
             <input placeholder="Search for products & brands..." type="text" id="search">
             <input type="submit" value="Search">
@@ -27,17 +30,22 @@
     
     <div id="deleteCont">
         <div id="category">
-            <select name="" id="">
+            <select name="" id="proCat">
                 <option value="">Shop By Category</option>
-                <option value=""></option>
+                <option value="Isolate Powder">Powder</option>
+                <option value="Protein Powder">Protein Powder</option>
+                <option value="Fish Oil">Fish Oil</option>
+                <option value="Biotin">Biotin Tablet</option>
             </select>
             <select name="" id="">
                 <option value="">Best Sellers</option>
                 <option value=""></option>
             </select>
-            <select name="" id="">
+            <select name="" id="brand">
                 <option value="">Brands</option>
-                <option value=""></option>
+                <option value="HealthKart">HealthKart</option>
+                <option value="Muscleblaze">Muscleblaze</option>
+                <option value="MB Fuel One">MB Fuel One</option>
             </select>
             <select name="" id="">
                 <option value="">Deals</option>
@@ -154,6 +162,7 @@
         </div>
 
     </div>
+</div>
 
 </body>
 <script src="./home.js"></script>

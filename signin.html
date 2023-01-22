@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Signin</title>
     <style>
             #main-container{
             width: 80%;
@@ -13,13 +13,12 @@
             margin: auto;
             height: 600px;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 20px;
         }
         #cont1{
             width: 50%;
             height: 100%;
             background-color: #F5F5F5;
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
         }
         #cont2{
             width: 50%;
@@ -75,10 +74,9 @@
                 <input type="password" placeholder="Enter Password" id="password">
                 <input type="Submit" value="Login" id="log-btn">
                 <p>
-                    Go to -
-                    <a href="./signup.html">Signup</a>
+                    Dont't have an account?
+                    <a href="./signup.html">Register</a>
                 </p>
-
             </form>
         </div>
     </div>
@@ -133,12 +131,14 @@
     for(let i=0;i<getdata.length;i++){
       if(getdata[i].email == formData[i].email && getdata[i].pass == formData[i].pass){
         window.location.href = "./home.html"
-      }else {
-          alert("Wrong Credentials");
+        alert("Login Successfull")
+      }else if(formData[i].email == "" && formData[i].pass == ""){
+          alert("Enter your Email and Password");
+    }else{
+        alert("Wrong Credentials")
     }
   }
 }
-    
 
 </script>
 
